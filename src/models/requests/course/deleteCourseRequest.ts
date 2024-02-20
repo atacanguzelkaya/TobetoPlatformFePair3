@@ -1,0 +1,1 @@
+export interface DeleteCourseRequest { id: string; }

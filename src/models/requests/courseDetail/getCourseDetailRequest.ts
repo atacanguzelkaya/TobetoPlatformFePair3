@@ -1,0 +1,1 @@
+export interface GetCourseDetailRequest { id: string;}

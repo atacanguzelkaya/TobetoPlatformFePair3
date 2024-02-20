@@ -1,0 +1,1 @@
+export interface GetExperienceRequest { id: string;}

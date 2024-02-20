@@ -1,0 +1,1 @@
+export interface GetInstructorRequest { id: string; }

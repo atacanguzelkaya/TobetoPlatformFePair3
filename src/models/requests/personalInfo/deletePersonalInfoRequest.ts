@@ -1,0 +1,1 @@
+export interface DeletePersonalInfoRequest { id: string;}

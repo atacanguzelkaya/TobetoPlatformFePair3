@@ -1,0 +1,1 @@
+export interface DeleteSessionRequest { id: string;}

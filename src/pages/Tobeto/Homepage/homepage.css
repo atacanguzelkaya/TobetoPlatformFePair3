@@ -1,0 +1,49 @@
+.fst-italic {
+    font-style: italic;
+    display: flex;
+}
+
+.word-container {
+    display: flex;
+}
+
+.word1,
+.word2 {
+    white-space: nowrap; 
+}
+
+.word1::before {
+    content: '\00a0'; 
+}
+
+.word2::before {
+    content: '\00a0'; 
+}
+.d-flex {
+    display: flex;
+}
+
+.col-md-3 {
+    flex: 0 0 25%;
+    max-width: 25%;
+}
+
+.image-container {
+    max-width: 172px;
+    height: auto;
+}
+.custom-row {
+    display: flex;
+    align-items: center;
+    background: #2f2f2f!important;
+    border-radius: 25px;
+}
+
+.custom-col {
+    flex: 0 0 58.333333%;
+    max-width: 58.333333%;
+}
+
+.custom-image {
+    width: 100%;
+}

@@ -1,0 +1,22 @@
+.bg-indigo {
+    background-color: #9933FE;
+}
+.mobile-d-block {
+    display: block!important
+}
+.brand-span img {
+  display: block;
+   width: 150px;
+   height: initial;
+   background: none;
+   opacity: 1;
+   border: 0;
+   margin: 0;
+   padding: 0;
+ }
+ 
+ .footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 100px;
+}

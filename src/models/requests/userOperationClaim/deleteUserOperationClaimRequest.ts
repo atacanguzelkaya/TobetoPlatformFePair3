@@ -1,0 +1,1 @@
+export interface DeleteUserOperationClaimRequest { id: string;}

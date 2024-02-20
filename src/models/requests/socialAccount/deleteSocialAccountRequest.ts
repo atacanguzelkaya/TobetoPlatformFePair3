@@ -1,0 +1,1 @@
+export interface DeleteSocialAccountRequest { id: string;}

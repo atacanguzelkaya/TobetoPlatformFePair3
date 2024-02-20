@@ -1,0 +1,1 @@
+export interface DeleteStudentRequest { id: string;}

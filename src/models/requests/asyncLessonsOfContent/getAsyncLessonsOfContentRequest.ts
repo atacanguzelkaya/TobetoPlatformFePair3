@@ -1,0 +1,1 @@
+export interface GetAsyncLessonsOfContentRequest { asyncCourseId: string; }

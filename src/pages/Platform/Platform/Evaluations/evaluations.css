@@ -1,0 +1,50 @@
+.vector {
+    box-sizing: border-box;
+  }
+  
+  .vector span {
+    display: block;
+  }
+  
+  .vector img {
+    position: absolute;
+    inset: 0;
+    box-sizing: border-box;
+    padding: 0;
+    border: none;
+    margin: auto;
+    display: block;
+    width: 0;
+    height: 0;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+  }
+  .dashboard-card-slim {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+  
+  .dashboard-card-slim .d-flex {
+    align-items: center;
+    gap: 14px;
+  }
+  
+  .dashboard-card-slim img.platformIcon {
+    width: 3em;
+    height: 3em;
+    margin-top: 3px;
+  }
+  
+  .dashboard-card-slim button {
+    width: 100%;
+    max-width: 200px; 
+    margin-top: 8px;
+  }
+  .color{
+    background-color: #9933ff!important;
+    border: none!important;
+  }

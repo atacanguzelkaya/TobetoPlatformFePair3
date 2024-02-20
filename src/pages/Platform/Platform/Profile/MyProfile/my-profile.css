@@ -1,0 +1,78 @@
+.inclusive {
+    min-height: 100vh;
+}
+
+.iconrow {
+    margin-top: 1.5em;
+}
+
+.editicon {
+    background-color: white !important;
+    border: none;
+    margin: 0 !important;
+    padding: 0 !important
+}
+
+.profile-span {
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    max-width: 100%;
+}
+
+.profile-span2 {
+    box-sizing: border-box;
+    display: block;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    max-width: 100%;
+}
+
+.profile-img {
+    display: block;
+    max-width: 100%;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+}
+
+.profile-img2 {
+    position: absolute;
+    inset: 0px;
+    box-sizing: border-box;
+    padding: 0px;
+    border: none;
+    margin: auto;
+    display: block;
+    width: 0px;
+    height: 0px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    max-height: 100%;
+}
+.canvas{
+    display: block;
+    width: 334px;
+    height: 240px;
+}
+.cv-box-content{
+    max-width: 125px;
+}

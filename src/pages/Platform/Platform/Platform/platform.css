@@ -1,0 +1,35 @@
+.platform-page {
+    min-height: 120vh;
+}
+  
+.ik-logo-platform {
+    box-sizing: border-box;
+    overflow: hidden;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    max-width: 100%;
+  }
+  
+  .logo {
+    box-sizing: border-box;
+    display: block;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    max-width: 100%;
+  }
+
+  .fa 
+  {
+    margin-right: 5px;
+  }

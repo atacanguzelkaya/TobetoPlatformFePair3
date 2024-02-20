@@ -1,0 +1,13 @@
+.custom-paragraph {
+    text-decoration: none;
+    color: #6c757d; 
+    margin-top: 5px;
+    display: block;
+    cursor: pointer;
+}
+
+.custom-text {
+    font-weight: bold;
+    font-size: 2rem;
+    color: black;
+}

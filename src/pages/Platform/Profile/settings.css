@@ -1,0 +1,6 @@
+.settings-inclusive{
+min-height: 90vh;
+}
+.modal-index{
+    z-index: 99999;
+}

@@ -1,0 +1,40 @@
+.ca-content1 img [src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fca-1.cf0e22ca.png&w=640&q=75"] {
+    display: block;
+    max-width: 100%;
+    width: initial;
+    height: initial;
+    opacity: 1;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}
+.codecademy-link {
+    color: #93f;
+}
+
+.cagif span {
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    max-width: 100%;
+}
+
+.cagif img[src="https://tobeto.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fcacode.e3ffebc4.gif&w=3840&q=75"]{
+    display: block;
+    max-width: 75%;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0;
+    margin: 0;
+    padding: 0;
+}

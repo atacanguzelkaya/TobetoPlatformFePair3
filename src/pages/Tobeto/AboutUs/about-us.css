@@ -1,0 +1,87 @@
+.flex-col {
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+}
+
+.tbt-logo img {
+    margin-top: 50px;
+    height: 200px;
+ 
+}
+
+.aboutus-text {
+    font-size: 16px;
+    line-height: 1.5;
+    margin-bottom: 10px;
+ 
+}
+
+.aboutus-text span {
+    color: rgb(153, 51, 255);
+
+}
+
+.followus-banner {
+    text-align: center;
+}
+
+.followus-banner span {
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: block;
+}
+
+.followus-banner a {
+    color: #A628FF;
+    font-size: 24px;
+    margin: 0 10px;
+    text-decoration: none;
+}
+
+.followus-banner a:hover {
+    text-decoration: underline;
+}
+.about-banner {
+    text-align: center;
+}
+
+.about-banner span {
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: block;
+}
+
+.about-banner .address {
+    font-weight: 600;
+    margin-top: 10px;
+    color: #ffffff;
+}
+
+.my-10 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: block;
+}
+
+.mt-5 {
+    
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: block;
+}
+.followus-banner {
+    text-align: center;
+}
+
+.mb-10{
+    margin-bottom: 10px;
+    font-weight: 600;
+    display: block;
+}

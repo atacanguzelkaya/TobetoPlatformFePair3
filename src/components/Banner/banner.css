@@ -1,0 +1,35 @@
+.ik-banner {
+    background: #1e0f41;
+    background-size: cover
+}
+
+.ik-banner,.tobeto-banner {
+    min-height: 72px;
+    display: flex;
+    align-items: center;
+    position: fixed;
+    width: -webkit-fill-available;
+    top: 0;
+    left: 0;
+    z-index: 24
+}
+
+.tobeto-banner {
+    background: url(https://tobeto.com/_next/static/media/video-back.b5dde37e.png) no-repeat;
+    background-size: cover
+}
+
+.tobeto-banner span {
+    font-size: 16px;
+    padding: 3px 0;
+    display: block;
+    height: 30px
+}
+
+.ik-banner-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 1em
+}

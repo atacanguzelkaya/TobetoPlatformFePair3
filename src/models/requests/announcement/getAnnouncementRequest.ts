@@ -1,0 +1,1 @@
+export interface GetAnnouncementRequest { id: string; }

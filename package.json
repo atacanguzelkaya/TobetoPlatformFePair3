@@ -1,20 +1,35 @@
 {
-  "name": "tobeto-platform-fe-pair3",
+  "name": "tobeto-base",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@testing-library/jest-dom": "^5.17.0",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "@types/jest": "^27.5.2",
-    "@types/node": "^16.18.82",
-    "@types/react": "^18.2.57",
+    "@fullcalendar/react": "^6.1.10",
+    "@reduxjs/toolkit": "^2.1.0",
+    "@testing-library/jest-dom": "^6.4.2",
+    "@testing-library/react": "^14.2.1",
+    "@testing-library/user-event": "^14.5.2",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.16",
+    "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "axios": "^1.6.7",
+    "bootstrap": "^5.3.2",
+    "formik": "^2.4.5",
+    "fullcalendar": "^6.1.10",
+    "jwt-decode": "^4.0.0",
     "react": "^18.2.0",
+    "react-bootstrap": "^2.10.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0",
+    "react-router-dom": "^6.22.0",
     "react-scripts": "5.0.1",
-    "typescript": "^4.9.5",
-    "web-vitals": "^2.1.4"
+    "react-toastify": "^10.0.4",
+    "toastr": "^2.1.4",
+    "turkey-neighbourhoods": "^3.1.0",
+    "typescript": "^5.3.3",
+    "video-react": "^0.16.0",
+    "web-vitals": "^3.5.2",
+    "yup": "^1.3.3"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -39,5 +54,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@types/toastr": "^2.1.43",
+    "@types/video-react": "^0.15.5"
   }
 }

@@ -1,0 +1,1 @@
+export interface DeleteLiveContentRequest { id: string;}

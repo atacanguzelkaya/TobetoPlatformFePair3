@@ -1,0 +1,1 @@
+export interface GetNewsRequest { id: string; }

@@ -1,10 +1,11 @@
 import { useEffect, useState } from "react";
 import { PageRequestModel } from "../../../../core/pageRequestModel/pageRequest";
-import { getCities } from "turkey-neighbourhoods";
-import * as Yup from "yup";
-import personallnfoService from "../../../../services/personallnfoService";
 import { CreatePersonalInfoRequest } from "../../../../models/requests/personalInfo/createPersonalInfoRequest";
+import { getCities } from "turkey-neighbourhoods";
+import personallnfoService from "../../../../services/personallnfoService";
 import authService from "../../../../services/authService";
+import * as Yup from "yup";
+
 export interface EditListProfile {
   id: string;
   userId: string;
@@ -82,21 +83,16 @@ const EditProfileLogic = () => {
     });
   };
   const handleEditProfileDelete = async (idToDelete: string) => {
-    console.log(idToDelete);
     await personallnfoService.delete({ id: idToDelete });
     const deletedEditProfile = editProfileList.filter(
       (editProfile) => editProfile.id !== idToDelete
     );
-    console.log(deletedEditProfile);
     setEditProfileList(deletedEditProfile);
   };
   const handleSubmit = async (values: CreatePersonalInfoRequest) => {
-    console.log("Profil Düzenle'den istek atılıyor..");
-    console.log(values);
     await personallnfoService
       .create(values)
       .then((response) => {
-        console.log(response);
         setEditProfile(response.data);
         fetchEditProfile(pageRequest);
       })

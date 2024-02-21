@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import certificateService from "../../../services/certificateService";
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
-import { CreateCertificateRequest } from "../../../models/requests/certificate/createCertificateRequest";
-import { PageRequestModel } from "../../../core/pageRequestModel/pageRequest";
-import ProfileSidebar from "../../../components/Sidebar/profileSidebar";
-import InnerNavbar from "../../../components/Navbar/InnerNavbar";
-import InnerFooter from "../../../components/Footer/InnerFooter";
-import authService from "../../../services/authService";
+import { CreateCertificateRequest } from "../../../../models/requests/certificate/createCertificateRequest";
+import { PageRequestModel } from "../../../../core/pageRequestModel/pageRequest";
+import ProfileSidebar from "../../../../components/Sidebar/profileSidebar";
+import InnerNavbar from "../../../../components/Navbar/InnerNavbar";
+import InnerFooter from "../../../../components/Footer/InnerFooter";
+import certificateService from "../../../../services/certificateService";
+import authService from "../../../../services/authService";
 
 export interface CertificateModel {
   id: string;
@@ -53,17 +53,14 @@ const MyCertificates = () => {
   };
 
   const handleCertificateDelete = async (idToDelete: string) => {
-    console.log(idToDelete);
     await certificateService.delete({ id: idToDelete });
     const updatedCertificateDetails = certificateList.filter(
       (certificate) => certificate.id !== idToDelete
     );
-    console.log(updatedCertificateDetails);
     setCertificateList(updatedCertificateDetails);
   };
 
   const handleSubmit = async (values: CreateCertificateRequest) => {
-    console.log("Sertifikadan istek atılıyor..");
     const newValues: CreateCertificateRequest = {
       filePath: values.filePath,
       fileType: values.fileType,
@@ -72,7 +69,6 @@ const MyCertificates = () => {
     await certificateService
       .create(newValues)
       .then((response) => {
-        console.log(response);
         setCertificates(response.data);
         fetchCertificates(pageRequest);
       })
@@ -148,5 +144,4 @@ const MyCertificates = () => {
     </>
   );
 };
-
 export default MyCertificates;

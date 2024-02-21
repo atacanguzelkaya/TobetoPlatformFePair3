@@ -1,22 +1,11 @@
 import { useEffect, useState } from "react";
-import {
-  Col,
-  Container,
-  Dropdown,
-  DropdownItem,
-  DropdownMenu,
-  DropdownToggle,
-  Row,
-  Tab,
-  Tabs,
-} from "react-bootstrap";
+import {Button,Col,Container,Dropdown,DropdownButton,Row,Tab,Tabs} from "react-bootstrap";
+import { PageRequestModel } from "../../../core/pageRequestModel/pageRequest";
 import InnerNavbar from "../../../components/Navbar/InnerNavbar";
 import InnerFooter from "../../../components/Footer/InnerFooter";
-import { Link } from "react-router-dom";
 import CourseCard from "../../../components/Card/CourseCard";
-import "./my-courses.css";
 import courseService from "../../../services/courseService";
-import { PageRequestModel } from "../../../core/pageRequestModel/pageRequest";
+import "./my-courses.css";
 
 export interface CourseModel {
   id: string;
@@ -27,22 +16,34 @@ export interface CourseModel {
 }
 
 const MyCourses = () => {
-  const pageRequest: PageRequestModel = {
-    index: 0,
-    size: 10,
-  };
+  const pageRequest: PageRequestModel = { index: 0, size: 10 };
   const [courses, setCourses] = useState<CourseModel[]>([]);
+  const [selectedOption, setSelectedOption] = useState<string>("Sıralama");
   const fetchCourses = async (pageRequest: any) => {
     await courseService.getAll(pageRequest).then((response: any) => {
       setCourses(response.data.items);
     });
   };
 
-  const [selectedOption, setSelectedOption] =
-    useState<string>("Adına Göre (A-Z)");
   const handleDropdownSelect = (eventKey: any, event: any) => {
     setSelectedOption(eventKey);
+    sortCourses(eventKey);
   };
+  const sortCourses = (sortOption: string) => {
+    let sortedCourses: any[] = [];
+
+    if (sortOption === "Adına Göre (A-Z)") {
+      sortedCourses = [...courses].sort((a, b) =>
+        a.title.localeCompare(b.title)
+      );
+    } else if (sortOption === "Adına Göre (Z-A)") {
+      sortedCourses = [...courses].sort((a, b) =>
+        b.title.localeCompare(a.title)
+      );
+    }
+    setCourses(sortedCourses);
+  };
+
   useEffect(() => {
     fetchCourses(pageRequest);
   }, []);
@@ -60,8 +61,8 @@ const MyCourses = () => {
             </Container>
           </div>
         </Container>
-        <div className="container-mt-3">
-          <div className="row">
+        <div className="container-mt-3 mx-5">
+          <Row >
             <div className="col-md-5 col-12 mb-4">
               <div className="searchBox search-box">
                 <input
@@ -71,7 +72,7 @@ const MyCourses = () => {
                   placeholder="Arama"
                   defaultValue=""
                 />
-                <button className="btn btn-primary">
+                <Button variant="light">
                   <svg
                     viewBox="0 0 512 512"
                     fill="gray"
@@ -81,53 +82,44 @@ const MyCourses = () => {
                     <path d="M456.69 421.39L362.6 327.3a173.81 173.81 0 0034.84-104.58C397.44 126.38 319.06 48 222.72 48S48 126.38 48 222.72s78.38 174.72 174.72 174.72A173.81 173.81 0 00327.3 362.6l94.09 94.09a25 25 0 0035.3-35.3zM97.92 222.72a124.8 124.8 0 11124.8 124.8 124.95 124.95 0 01-124.8-124.8z" />
                   </svg>
                   <span className="ms-2"></span>
-                </button>
+                </Button>
               </div>
             </div>
             <div className="col-md-6 col-12 mb-4">
-              <div className="row">
-                <div className="col-md-6 col-12 mb-4">
+              <Row >
+              <div className="col-md-3 col-12 mb-4">
                   <Dropdown>
                     <Dropdown.Toggle
-                      variant="primary"
+                      variant="bg-light"
+                      className="rounded-5"
                       id="organization-dropdown"
                     >
-                      Kurum Seçiniz
+                      Tür
                     </Dropdown.Toggle>
-                    <DropdownMenu>
-                      <DropdownItem>İstanbul Kodluyor</DropdownItem>
-                    </DropdownMenu>
+                    <Dropdown.Menu>
+                      <Dropdown.Item>İstanbul Kodluyor</Dropdown.Item>
+                    </Dropdown.Menu>
                   </Dropdown>
                 </div>
-                <div className="col-md-6 col-12 mb-4">
-                  <Dropdown
-                    onSelect={(eventKey, event) =>
-                      handleDropdownSelect(eventKey, event)
-                    }
+                <div className="col-md-2 col-12 mb-4">
+                  <DropdownButton
+                    id="sorting-dropdown"
+                    title={selectedOption}
+                    onSelect={handleDropdownSelect}
+                    variant="bg-light rounded-5"
                   >
-                    <DropdownToggle variant="primary" id="sorting-dropdown">
-                      {selectedOption}
-                    </DropdownToggle>
-                    <DropdownMenu>
-                      <DropdownItem eventKey="Adına Göre (A-Z)">
-                        Adına Göre (A-Z)
-                      </DropdownItem>
-                      <DropdownItem eventKey="Adına Göre (Z-A)">
-                        Adına Göre (Z-A)
-                      </DropdownItem>
-                      <DropdownItem eventKey="Tarihe Göre (Y-E)">
-                        Tarihe Göre (Y-E)
-                      </DropdownItem>
-                      <DropdownItem eventKey="Tarihe Göre (E-Y)">
-                        Tarihe Göre (E-Y)
-                      </DropdownItem>
-                    </DropdownMenu>
-                  </Dropdown>
+                    <Dropdown.Item eventKey="Adına Göre (A-Z)">
+                      Adına Göre (A-Z)
+                    </Dropdown.Item>
+                    <Dropdown.Item eventKey="Adına Göre (Z-A)">
+                      Adına Göre (Z-A)
+                    </Dropdown.Item>
+                  </DropdownButton>
                 </div>
-              </div>
+              </Row>
             </div>
             <Col>
-              <Col className="mb-4">
+              <Col mb="4">
                 <Tabs
                   className="nav nav-tabs mainTablist d-flex justify-content-center"
                   id="myTab"
@@ -136,22 +128,6 @@ const MyCourses = () => {
                 >
                   <Tab eventKey="Eğitimlerim" title="Tüm Eğitimlerim">
                     <Row>
-                      <Col md="2" className=" mb-4">
-                        <div className="corp-edu-card">
-                          <img alt="" className="card-img" />
-                          <div className="card-content">
-                            <div className="d-flex flex-column">
-                              <span>Dr. Ecmel Ayral'dan Hoşgeldin Mesajı</span>
-                              <span className="platform-course-date">
-                                21 Eylül 2023 15:20
-                              </span>
-                            </div>
-                            <Link to="/content" className="apply-btn">
-                              Eğitime Git
-                            </Link>
-                          </div>
-                        </div>
-                      </Col>
                       {courses.map((course) => (
                         <Col key={course.id} md="2" className=" mb-4">
                           <CourseCard course={course} />
@@ -164,7 +140,7 @@ const MyCourses = () => {
                 </Tabs>
               </Col>
             </Col>
-          </div>
+          </Row>
         </div>
       </main>
       <InnerFooter />

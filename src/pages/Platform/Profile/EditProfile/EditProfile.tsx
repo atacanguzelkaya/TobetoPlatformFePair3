@@ -1,16 +1,11 @@
 import { Container, Row, Button, Col } from "react-bootstrap";
+import { Field, Formik, Form } from "formik";
+import {cities,initialValues,validationSchema,EditProfileLogic} from "./edit-profile";
 import ProfileSidebar from "../../../../components/Sidebar/profileSidebar";
 import InnerNavbar from "../../../../components/Navbar/InnerNavbar";
 import InnerFooter from "../../../../components/Footer/InnerFooter";
-import { Field, Formik, Form } from "formik";
 import ProfileFormikInput from "../../../../components/FormikInput/ProfileFormikInput";
 import "./edit-profile.css";
-import {
-  cities,
-  initialValues,
-  validationSchema,
-  EditProfileLogic,
-} from "./edit-profile";
 
 const EditProfile = () => {
   const { editProfileList, handleEditProfileDelete, handleSubmit } =

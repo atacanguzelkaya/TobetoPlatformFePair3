@@ -1,16 +1,15 @@
 import { useEffect, useState } from "react";
 import { Button, Container, Row, Col } from "react-bootstrap";
-import ProfileSidebar from "../../../components/Sidebar/profileSidebar";
-import InnerNavbar from "../../../components/Navbar/InnerNavbar";
-import InnerFooter from "../../../components/Footer/InnerFooter";
 import { ErrorMessage, Field, Formik, Form } from "formik";
-import ProfileFormikInput from "../../../components/FormikInput/ProfileFormikInput";
-import educationService from "../../../services/educationService";
-import { CreateEducationRequest } from "../../../models/requests/education/createEducationRequest";
-import { PageRequestModel } from "../../../core/pageRequestModel/pageRequest";
+import { CreateEducationRequest } from "../../../../models/requests/education/createEducationRequest";
+import { PageRequestModel } from "../../../../core/pageRequestModel/pageRequest";
+import ProfileSidebar from "../../../../components/Sidebar/profileSidebar";
+import InnerNavbar from "../../../../components/Navbar/InnerNavbar";
+import InnerFooter from "../../../../components/Footer/InnerFooter";
+import ProfileFormikInput from "../../../../components/FormikInput/ProfileFormikInput";
+import educationService from "../../../../services/educationService";
+import authService from "../../../../services/authService";
 import * as Yup from "yup";
-import "./profile-tabs.css";
-import authService from "../../../services/authService";
 
 export interface EducationListModel {
   id: string;
@@ -58,10 +57,7 @@ const MyEducation = () => {
   ];
 
   const handleSubmit = async (values: CreateEducationRequest) => {
-    console.log("Eğitimden istek atılıyor..");
-    console.log(values);
     await educationService.create(values).then((response) => {
-      console.log(response);
       setEducation(response.data)
       fetchCourses(pageRequest);
     }).catch((error: any) => { console.error(error) });
@@ -79,10 +75,8 @@ const MyEducation = () => {
   };
 
   const handleEducationDelete = async (idToDelete: string) => {
-    console.log(idToDelete)
     await educationService.delete({ id: idToDelete });
     const updatedEducationDetails = educationList.filter(education => education.id !== idToDelete);
-    console.log(updatedEducationDetails)
     setEducationList(updatedEducationDetails);
   };
 

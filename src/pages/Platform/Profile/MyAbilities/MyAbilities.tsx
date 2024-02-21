@@ -1,16 +1,15 @@
 import { useEffect, useState } from 'react';
 import { Row, Col, Button, Container } from 'react-bootstrap';
-import ProfileSidebar from '../../../components/Sidebar/profileSidebar';
-import InnerNavbar from '../../../components/Navbar/InnerNavbar';
-import InnerFooter from '../../../components/Footer/InnerFooter';
-import * as Yup from "yup";
-import './profile-tabs.css'
 import { Form, Formik } from 'formik';
-import ProfileFormikInput from '../../../components/FormikInput/ProfileFormikInput';
-import { CreateAbilityRequest } from '../../../models/requests/ability/createAbilityRequest';
-import { PageRequestModel } from '../../../core/pageRequestModel/pageRequest';
-import abilityService from '../../../services/abilityService';
-import authService from '../../../services/authService';
+import { CreateAbilityRequest } from '../../../../models/requests/ability/createAbilityRequest';
+import { PageRequestModel } from '../../../../core/pageRequestModel/pageRequest';
+import ProfileSidebar from '../../../../components/Sidebar/profileSidebar';
+import InnerNavbar from '../../../../components/Navbar/InnerNavbar';
+import InnerFooter from '../../../../components/Footer/InnerFooter';
+import ProfileFormikInput from '../../../../components/FormikInput/ProfileFormikInput';
+import abilityService from '../../../../services/abilityService';
+import authService from '../../../../services/authService';
+import * as Yup from "yup";
 
 export interface AbilityModel {
   id: string;
@@ -32,10 +31,7 @@ const MyAbilities = () => {
   };
 
   const handleSubmit = async (values: CreateAbilityRequest) => {
-    console.log("Deneyimlerden istek atılıyor..");
-    console.log(values);
     await abilityService.create(values).then((response) => {
-      console.log(response);
       setAbilities(response.data)
       fetchAbility(pageRequest);
     }).catch((error: any) => { console.error(error) });
@@ -51,13 +47,10 @@ const MyAbilities = () => {
     });
   };
   const handleAbilityDelete = async (idToDelete: string) => {
-    console.log(idToDelete)
     await abilityService.delete({ id: idToDelete });
     const deletedAbility = abilityList.filter(ability => ability.id !== idToDelete);
-    console.log(deletedAbility)
     setAbilityList(deletedAbility);
   };
-
   useEffect(() => { fetchAbility(pageRequest); }, []);
 
   return (

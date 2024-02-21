@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { Col, Row, Button, Container } from "react-bootstrap";
-import ProfileSidebar from "../../../components/Sidebar/profileSidebar";
-import InnerNavbar from "../../../components/Navbar/InnerNavbar";
-import InnerFooter from "../../../components/Footer/InnerFooter";
-import "./profile-tabs.css";
-import * as Yup from "yup";
-import { PageRequestModel } from "../../../core/pageRequestModel/pageRequest";
-import { CreateForeignLanguageRequest } from "../../../models/requests/foreignLanguage/createForeignLanguageRequest";
-import foreignLanguageService from "../../../services/foreignLanguageService";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import authService from "../../../services/authService";
+import { PageRequestModel } from "../../../../core/pageRequestModel/pageRequest";
+import { CreateForeignLanguageRequest } from "../../../../models/requests/foreignLanguage/createForeignLanguageRequest";
+import ProfileSidebar from "../../../../components/Sidebar/profileSidebar";
+import InnerNavbar from "../../../../components/Navbar/InnerNavbar";
+import InnerFooter from "../../../../components/Footer/InnerFooter";
+import foreignLanguageService from "../../../../services/foreignLanguageService";
+import authService from "../../../../services/authService";
+import * as Yup from "yup";
 
 export interface LanguageModel {
   id: string;
@@ -65,12 +64,9 @@ const ForeignLanguage = () => {
   };
 
   const handleSubmit = async (values: CreateForeignLanguageRequest) => {
-    console.log("Yabancı Dil'den istek atılıyor..");
-    console.log(values);
     await foreignLanguageService
       .create(values)
       .then((response) => {
-        console.log(response);
         setLanguages(response.data);
         fetchLanguage(pageRequest);
       })
@@ -82,19 +78,18 @@ const ForeignLanguage = () => {
     await foreignLanguageService.getAll(pageRequest).then((response: any) => {
       const userId = authService.getUserId();
       if (response) {
-        const matchingForeignLanguage = response.data.items.filter((item: any) =>
-          item.userId === userId);
-          setLanguageList(matchingForeignLanguage);
+        const matchingForeignLanguage = response.data.items.filter(
+          (item: any) => item.userId === userId
+        );
+        setLanguageList(matchingForeignLanguage);
       }
     });
   };
   const handleForeignLanguageDelete = async (idToDelete: string) => {
-    console.log(idToDelete);
     await foreignLanguageService.delete({ id: idToDelete });
     const deletedLanguage = languageList.filter(
       (language) => language.id !== idToDelete
     );
-    console.log(deletedLanguage);
     setLanguageList(deletedLanguage);
   };
   useEffect(() => {
@@ -145,7 +140,10 @@ const ForeignLanguage = () => {
                     </ErrorMessage>
                   </Col>
                 </Row>
-                <Button type="submit" className="btn-primary py-2 m-3 d-inline-block">
+                <Button
+                  type="submit"
+                  className="btn-primary py-2 m-3 d-inline-block"
+                >
                   Kaydet
                 </Button>
               </Form>

@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { Container, Button, Row, Col } from "react-bootstrap";
-import ProfileSidebar from "../../../components/Sidebar/profileSidebar";
-import InnerNavbar from "../../../components/Navbar/InnerNavbar";
-import InnerFooter from "../../../components/Footer/InnerFooter";
-import "./social-media-accounts.css";
-import * as Yup from "yup";
-import { PageRequestModel } from "../../../core/pageRequestModel/pageRequest";
-import { CreateSocialAccountRequest } from "../../../models/requests/socialAccount/createSocialAccountRequest";
-import socialAccountService from "../../../services/socialAccountService";
 import { ErrorMessage, Field, Form, Formik } from "formik";
-import ProfileFormikInput from "../../../components/FormikInput/ProfileFormikInput";
-import authService from "../../../services/authService";
+import { PageRequestModel } from "../../../../core/pageRequestModel/pageRequest";
+import { CreateSocialAccountRequest } from "../../../../models/requests/socialAccount/createSocialAccountRequest";
+import ProfileSidebar from "../../../../components/Sidebar/profileSidebar";
+import InnerNavbar from "../../../../components/Navbar/InnerNavbar";
+import InnerFooter from "../../../../components/Footer/InnerFooter";
+import socialAccountService from "../../../../services/socialAccountService";
+import ProfileFormikInput from "../../../../components/FormikInput/ProfileFormikInput";
+import authService from "../../../../services/authService";
+import * as Yup from "yup";
+import "./social-media-accounts.css";
 
 export interface SocialAccountModel {
   id: string;
@@ -31,8 +31,11 @@ export interface GetAllSocialAccountsModel {
 const pageRequest: PageRequestModel = { index: 0, size: 10 };
 
 const SocialMediaAccounts = () => {
-  const [socialAccount, setSocialAccount] =useState<CreateSocialAccountRequest>();
-  const [socialAccountList, setSocialAccountList] = useState<SocialAccountModel[]>([]);
+  const [socialAccount, setSocialAccount] =
+    useState<CreateSocialAccountRequest>();
+  const [socialAccountList, setSocialAccountList] = useState<
+    SocialAccountModel[]
+  >([]);
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required("Sosyal Medya seçiniz.."),
@@ -53,12 +56,9 @@ const SocialMediaAccounts = () => {
   ];
 
   const handleSubmit = async (values: CreateSocialAccountRequest) => {
-    console.log("Sosyal Hesap Sayfası'ndan istek atılıyor..");
-    console.log(values);
     await socialAccountService
       .create(values)
       .then((response) => {
-        console.log(response);
         setSocialAccount(response.data);
         fetchSocialAccount(pageRequest);
       })
@@ -71,20 +71,19 @@ const SocialMediaAccounts = () => {
     await socialAccountService.getAll(pageRequest).then((response: any) => {
       const userId = authService.getUserId();
       if (response) {
-        const matchingSocialMedia = response.data.items.filter((item: any) =>
-          item.userId === userId);
-          setSocialAccountList(matchingSocialMedia);
+        const matchingSocialMedia = response.data.items.filter(
+          (item: any) => item.userId === userId
+        );
+        setSocialAccountList(matchingSocialMedia);
       }
     });
   };
 
   const handleSocialAccountDelete = async (idToDelete: string) => {
-    console.log(idToDelete);
     await socialAccountService.delete({ id: idToDelete });
     const updatedSocialAccountDetails = socialAccountList.filter(
       (socialAccount) => socialAccount.id !== idToDelete
     );
-    console.log(updatedSocialAccountDetails);
     setSocialAccountList(updatedSocialAccountDetails);
   };
 
@@ -109,11 +108,7 @@ const SocialMediaAccounts = () => {
                   <Row mb={2} mt={4}>
                     <Col md={4} xs={12}>
                       <label className="form-label">Sosyal Medya*</label>
-                      <Field
-                        as="select"
-                        name="name"
-                        className="form-select"
-                      >
+                      <Field as="select" name="name" className="form-select">
                         <option value="">Seviye Seçiniz..</option>
                         {levels.map((level) => (
                           <option key={level.id} value={level.name}>
@@ -144,11 +139,19 @@ const SocialMediaAccounts = () => {
             </Formik>
             <Col className="mt-5">
               {socialAccountList?.map((social) => (
-              <div className="section-header mt-3" key={social.id}>
-                <span className="fw-bold mx-2">{social.name}</span>
-                <span className={`form-control input-${social.name.toLowerCase()}`}> {social.accountUrl} </span>
-                <Button className="social-delete i-size" onClick={() => handleSocialAccountDelete(social.id)} />
-              </div>
+                <div className="section-header mt-3" key={social.id}>
+                  <span className="fw-bold mx-2">{social.name}</span>
+                  <span
+                    className={`form-control input-${social.name.toLowerCase()}`}
+                  >
+                    {" "}
+                    {social.accountUrl}{" "}
+                  </span>
+                  <Button
+                    className="social-delete i-size"
+                    onClick={() => handleSocialAccountDelete(social.id)}
+                  />
+                </div>
               ))}
             </Col>
           </Col>

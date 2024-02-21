@@ -1,8 +1,8 @@
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import { badges, legendData, MyProfileLogic, cleanUrl } from "./my-profile";
 import InnerNavbar from "../../../../components/Navbar/InnerNavbar";
 import InnerFooter from "../../../../components/Footer/InnerFooter";
-import { badges, legendData, MyProfileLogic, cleanUrl } from "./my-profile";
 import "./my-profile.css";
 
 const MyProfile = () => {

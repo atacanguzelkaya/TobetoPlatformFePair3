@@ -1,17 +1,16 @@
 import { useEffect, useState } from "react";
 import { Container, Row, Button, Col } from "react-bootstrap";
-import ProfileSidebar from "../../../components/Sidebar/profileSidebar";
-import InnerNavbar from "../../../components/Navbar/InnerNavbar";
-import InnerFooter from "../../../components/Footer/InnerFooter";
-import experienceService from "../../../services/experienceService";
 import { ErrorMessage, Field, Formik, Form } from "formik";
-import ProfileFormikInput from "../../../components/FormikInput/ProfileFormikInput";
-import { PageRequestModel } from "../../../core/pageRequestModel/pageRequest";
-import { CreateExperienceRequest } from "../../../models/requests/experience/createExperienceRequest";
+import { PageRequestModel } from "../../../../core/pageRequestModel/pageRequest";
+import { CreateExperienceRequest } from "../../../../models/requests/experience/createExperienceRequest";
 import { getCities } from 'turkey-neighbourhoods'
+import ProfileSidebar from "../../../../components/Sidebar/profileSidebar";
+import InnerNavbar from "../../../../components/Navbar/InnerNavbar";
+import InnerFooter from "../../../../components/Footer/InnerFooter";
+import experienceService from "../../../../services/experienceService";
+import ProfileFormikInput from "../../../../components/FormikInput/ProfileFormikInput";
+import authService from "../../../../services/authService";
 import * as Yup from "yup";
-import "./profile-tabs.css";
-import authService from "../../../services/authService";
 
 export interface ExperienceModel {
   id: string;
@@ -29,7 +28,6 @@ const pageRequest: PageRequestModel = { index: 0, size: 10, };
 const MyExperiences = () => {
   const [experiences, setExperiences] = useState<CreateExperienceRequest>();
   const [experienceList, setExperienceList] = useState<ExperienceModel[]>([]);
-
   const validationSchema = Yup.object().shape({
     organizationName: Yup.string().required("Kurum Adı zorunludur."),
     position: Yup.string().required("Pozisyon zorunludur."),
@@ -50,17 +48,12 @@ const MyExperiences = () => {
   };
 
   const cities = getCities();
-
   const handleSubmit = async (values: CreateExperienceRequest) => {
-    console.log("Deneyimlerden istek atılıyor..");
-    console.log(values);
     await experienceService.create(values).then((response) => {
-      console.log(response);
       setExperiences(response.data)
       fetchExperience(pageRequest);
     }).catch((error: any) => { console.error(error) });
   };
-
   const fetchExperience = async (pageRequest: any) => {
     await experienceService.getAll(pageRequest).then((response: any) => {
       const userId = authService.getUserId();
@@ -71,12 +64,9 @@ const MyExperiences = () => {
       }
     });
   };
-
   const handleExperienceDelete = async (idToDelete: string) => {
-    console.log(idToDelete)
     await experienceService.delete({ id: idToDelete });
     const updatedExperienceDetails = experienceList.filter(experience => experience.id !== idToDelete);
-    console.log(updatedExperienceDetails)
     setExperienceList(updatedExperienceDetails);
   };
 
@@ -157,7 +147,7 @@ const MyExperiences = () => {
               {experienceList?.map((experience) => (
                 <div className="my-grade" key={experience.id}>
                   <div className="grade-header">
-                    <span className="grade-date">{experience.startDate} - {experience.endDate}</span>
+                    <span className="grade-date">{experience.startDate.split("T")[0]} - {experience.endDate.split("T")[0]}</span>
                   </div>
                   <div className="grade-details">
                     <Col as="span" className="grade-details-col">
@@ -193,5 +183,4 @@ const MyExperiences = () => {
     </>
   );
 };
-
 export default MyExperiences;

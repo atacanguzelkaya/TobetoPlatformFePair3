@@ -1,16 +1,16 @@
 import React, { useState } from 'react';
 import { Form, Button, Container, Row, Col, Modal } from 'react-bootstrap';
-import * as Yup from 'yup';
-import InnerFooter from '../../../components/Footer/InnerFooter';
-import ProfileSidebar from '../../../components/Sidebar/profileSidebar';
-import InnerNavbar from '../../../components/Navbar/InnerNavbar';
-import { UpdatePasswordRequest } from '../../../models/requests/user/updatePasswordRequest';
-import { passwordRule } from '../../../core/validation/customValidationRules';
-import authService from '../../../services/authService';
-import userService from '../../../services/userService';
-import './settings.css';
 import { useNavigate } from 'react-router-dom';
+import { UpdatePasswordRequest } from '../../../../models/requests/user/updatePasswordRequest';
+import { passwordRule } from '../../../../core/validation/customValidationRules';
+import InnerFooter from '../../../../components/Footer/InnerFooter';
+import ProfileSidebar from '../../../../components/Sidebar/profileSidebar';
+import InnerNavbar from '../../../../components/Navbar/InnerNavbar';
+import authService from '../../../../services/authService';
+import userService from '../../../../services/userService';
 import toastr from 'toastr';
+import * as Yup from 'yup';
+import './settings.css';
 
 const Settings = () => {
   const [oldPassword, setOldPassword] = useState('');
@@ -23,7 +23,6 @@ const Settings = () => {
 
   const handleAccountCancellation = async (userId: string) => {
     await userService.delete({ id: userId }).then((response) => {
-      console.log(response.status);
       toastr.success('Hesabınız başarıyla silindi.');
       authService.logout();
       setTimeout(() => { navigate("/"); }, 200);
@@ -75,7 +74,6 @@ const Settings = () => {
     })
   };
 
-
   return (
     <>
       <InnerNavbar />
@@ -87,22 +85,22 @@ const Settings = () => {
               <Row className="mb-2">
                 <Form.Group as={Col} md="4" mb="6" controlId="oldPassword">
                   <Form.Label>Eski Şifre*</Form.Label>
-                  <Form.Control required type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
+                  <Form.Control required placeholder='Eski Şifre' type="password" value={oldPassword} onChange={(e) => setOldPassword(e.target.value)} />
                 </Form.Group>
                 <Form.Group as={Col} md="4" mb="6" controlId="newPassword">
                   <Form.Label>Yeni Şifre*</Form.Label>
-                  <Form.Control required type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
+                  <Form.Control required placeholder='Yeni Şifre' type="password" value={newPassword} onChange={(e) => setNewPassword(e.target.value)} />
                 </Form.Group>
                 <Form.Group as={Col} md="4" mb="6" controlId="confirmPassword">
                   <Form.Label>Yeni Şifre Tekrar*</Form.Label>
-                  <Form.Control required type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
+                  <Form.Control required placeholder='Yeni Şifre Tekrar' type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} />
                 </Form.Group>
               </Row>
               {errorMessage && <p className="text-danger">{errorMessage}</p>}
-              <Button className="col-12 col-md-6" variant="primary" type="submit">
+              <Button className="col-12 col-md-5 mx-5 rounded-5" variant="primary" type="submit">
                 Şifre Değiştir
               </Button>
-              <Button onClick={() => setModalShow(true)} className="col-12 col-md-6" variant="danger" type="submit">
+              <Button onClick={() => setModalShow(true)} className="col-12 col-md-5 rounded-5" variant="danger" type="submit">
                 Üyeliği Sonlandır
               </Button>
             </Form>

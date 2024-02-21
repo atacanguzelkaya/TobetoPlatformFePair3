@@ -1,10 +1,9 @@
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import { Col, Container, Row, Tabs, Tab, Image } from "react-bootstrap";
 import InnerNavbar from "../../../components/Navbar/InnerNavbar";
 import InnerFooter from "../../../components/Footer/InnerFooter";
-import { Col, Container, Row, Tabs, Tab, Button } from "react-bootstrap";
 import "./platform.css";
-import { useEffect, useState } from "react";
-import tokenService from "../../../core/services/tokenService";
 
 const cards = [
   {
@@ -33,13 +32,36 @@ const cards = [
   },
 ];
 
+const notifications = [
+  {
+    type: "Duyuru",
+    corpName: "İstanbul Kodluyor",
+    header: "Ocak Ayı Bilgilendirmesi",
+    date: "12.01.2024",
+  },
+  {
+    type: "Duyuru",
+    corpName: "İstanbul Kodluyor",
+    header: "Şubat Ayı Bilgilendirmesi",
+    date: "06.01.2024",
+  },
+  {
+    type: "Duyuru",
+    corpName: "İstanbul Kodluyor",
+    header: "Mart Ayı Bilgilendirmesi",
+    date: "03.01.2024",
+  },
+];
+
 function UserFullName() {
-  const userData = JSON.parse(localStorage.getItem('user')!);
-  if(userData){ return (userData.firstName); }
+  const userData = JSON.parse(localStorage.getItem("user")!);
+  if (userData) {
+    return userData.firstName;
+  }
 }
-const Platform = () => { 
+const Platform = () => {
   const [userName, setUserName] = useState<string>();
-  useEffect( () => {
+  useEffect(() => {
     const user = UserFullName();
     setUserName(user);
   }, []);
@@ -49,16 +71,7 @@ const Platform = () => {
       <InnerNavbar />
       <div className="platform-page">
         <section className="py-5">
-          <div className="position-relative ">
-            <div className="vector">
-              <span>
-                <img
-                  alt=""
-                  aria-hidden="true"
-                  src="https://tobeto.com/_next/static/media/dot-purple.e0e5c9d8.svg"
-                />
-              </span>
-            </div>
+          <div className="position-relative">
             <div className="container text-center">
               <div className="mw-5xl mx-auto">
                 <h3>
@@ -69,7 +82,10 @@ const Platform = () => {
                   <span className="fw-normal ">'ya </span>
                   <span className="fw-normal "> hoş geldin </span>
                 </h3>
-                <h4 className="fw-normal fw-bold mb-5 text-indigo"> {userName} </h4>
+                <h4 className="fw-normal fw-bold mb-5 text-indigo">
+                  {" "}
+                  {userName}{" "}
+                </h4>
                 <p className="tobeto-slogan">
                   Yeni nesil öğrenme deneyimi ile Tobeto kariyer yolculuğunda
                   senin yanında!
@@ -85,9 +101,9 @@ const Platform = () => {
                 <div className="p-4">
                   <span className="logo">
                     <span>
-                      <img
+                      <Image
                         alt=""
-                        src="./assets/svg/ik-logo-dark.7938c0de.webp"
+                        src="./assets/svg/ik-logo-dark.7938c0de.svg"
                         loading="lazy"
                       />
                     </span>
@@ -181,7 +197,9 @@ const Platform = () => {
                               <div className="card-content">
                                 <div className="d-flex flex-column">
                                   <span>{card.title}</span>
-                                  <span className="platform-course-date">{card.date}</span>
+                                  <span className="platform-course-date">
+                                    {card.date}
+                                  </span>
                                 </div>
                                 <Link to={card.link} className="apply-btn">
                                   Eğitime Git
@@ -202,63 +220,31 @@ const Platform = () => {
                       title="Duyuru ve Haberlerim"
                     >
                       <Row>
-                        <Col md="4" className="my-4">
-                          <div className="notfy-card notify">
-                            <div className="d-flex flex-column">
-                              <div className="d-flex justify-content-between mb-4">
-                                <span className="type">Duyuru</span>
-                                <span className="corp-names type">
-                                  İstanbul Kodluyor
+                        {notifications.map((notification, index) => (
+                          <div className="col-md-4 col-12 my-4" key={index}>
+                            <div className="notfy-card notify">
+                              <div className="d-flex flex-column">
+                                <div className="d-flex justify-content-between mb-4">
+                                  <span className="type">
+                                    {notification.type}
+                                  </span>
+                                  <span className="corp-names type">
+                                    {notification.corpName}
+                                  </span>
+                                </div>
+                                <span className="header">
+                                  {notification.header}
                                 </span>
                               </div>
-                              <span className="header">
-                                Ocak Ayı Bilgilendirmesi
-                              </span>
-                            </div>
-                            <div className="d-flex justify-content-between">
-                              <span className="date">12.01.2024</span>
-                              <span className="read-more">Devamını Oku</span>
-                            </div>
-                          </div>
-                        </Col>
-                        <div className="col-md-4 col-12 my-4">
-                          <div className="notfy-card notify">
-                            <div className="d-flex flex-column">
-                              <div className="d-flex justify-content-between mb-4">
-                                <span className="type">Duyuru</span>
-                                <span className="corp-names type">
-                                  İstanbul Kodluyor
+                              <div className="d-flex justify-content-between">
+                                <span className="date">
+                                  {notification.date}
                                 </span>
+                                <span className="read-more">Devamını Oku</span>
                               </div>
-                              <span className="header">
-                              Şubat Ayı Bilgilendirmesi
-                              </span>
-                            </div>
-                            <div className="d-flex justify-content-between">
-                              <span className="date">06.01.2024</span>
-                              <span className="read-more">Devamını Oku</span>
                             </div>
                           </div>
-                        </div>
-                        <div className="col-md-4 col-12 my-4">
-                          <div className="notfy-card notify">
-                            <div className="d-flex flex-column">
-                              <div className="d-flex justify-content-between mb-4">
-                                <span className="type">Duyuru</span>
-                                <span className="corp-names type">
-                                  İstanbul Kodluyor
-                                </span>
-                              </div>
-                              <span className="header">
-                              Mart Ayı Bilgilendirmesi
-                              </span>
-                            </div>
-                            <div className="d-flex justify-content-between">
-                              <span className="date">03.01.2024</span>
-                              <span className="read-more">Devamını Oku</span>
-                            </div>
-                          </div>
-                        </div>
+                        ))}
                       </Row>
                       <div className="text-center">
                         <Link to="/duyurularim" className="btn btn-success">
@@ -316,7 +302,10 @@ const Platform = () => {
                   <h1>
                     <br /> Profilini oluştur
                   </h1>
-                  <Link to="/profilim/profilimi-duzenle/kisisel-bilgilerim" className="btn btn-light w-100 rounded-5 ">
+                  <Link
+                    to="/profilim/profilimi-duzenle/kisisel-bilgilerim"
+                    className="btn btn-light w-100 rounded-5 "
+                  >
                     Başla
                   </Link>
                 </div>
@@ -326,7 +315,10 @@ const Platform = () => {
                   <h1 className="mb-6">
                     <br /> Kendini değerlendir
                   </h1>
-                  <Link to="/degerlendirmeler" className="btn btn-light w-100 rounded-5">
+                  <Link
+                    to="/degerlendirmeler"
+                    className="btn btn-light w-100 rounded-5"
+                  >
                     Başla
                   </Link>
                 </div>
@@ -336,7 +328,10 @@ const Platform = () => {
                   <h1 className="mb-6">
                     <br /> Öğrenmeye başla
                   </h1>
-                  <Link to="/platform-katalog" className="btn btn-light w-100 rounded-5">
+                  <Link
+                    to="/platform-katalog"
+                    className="btn btn-light w-100 rounded-5"
+                  >
                     Başla
                   </Link>
                 </div>

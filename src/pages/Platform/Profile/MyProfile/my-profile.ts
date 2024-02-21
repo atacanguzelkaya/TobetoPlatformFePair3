@@ -60,7 +60,6 @@ const MyProfileLogic = () => {
 
   const fetchData = async () => {
     await personallnfoService.getAll(pageRequest).then((response: any) => {
-      console.log(response.data.items);
       const userId = authService.getUserId();
       const personalInfoData: any[] = [];
       response.data.items.forEach((item: any) => {
@@ -90,7 +89,6 @@ const MyProfileLogic = () => {
         }
       });
       setAbilityList(abilityData);
-      console.log(abilityData);
     });
 
     await foreignLanguageService.getAll(pageRequest).then((response: any) => {
@@ -107,7 +105,6 @@ const MyProfileLogic = () => {
         }
       });
       setForeignLanguageList(foreignLanguageData);
-      console.log(foreignLanguageData);
     });
 
     await certificateService.getAll(pageRequest).then((response: any) => {
@@ -124,7 +121,6 @@ const MyProfileLogic = () => {
         }
       });
       setCertificateList(certificateData);
-      console.log(certificateData);
     });
 
     await socialAccountService.getAll(pageRequest).then((response: any) => {
@@ -141,7 +137,6 @@ const MyProfileLogic = () => {
         }
       });
       setSocialMediaList(socialAccountData);
-      console.log(socialAccountData);
     });
 
     await educationService.getAll(pageRequest).then((response: any) => {
@@ -160,7 +155,6 @@ const MyProfileLogic = () => {
         }
       });
       setEducationList(educationData);
-      console.log(educationData);
     });
 
     await experienceService.getAll(pageRequest).then((response: any) => {
@@ -181,7 +175,6 @@ const MyProfileLogic = () => {
         }
       });
       setExperienceList(experienceData);
-      console.log(experienceData);
     });
   };
 

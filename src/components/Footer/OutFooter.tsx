@@ -14,7 +14,9 @@ const OutFooter = () => {
                 <li className="mb-3">
                   <Link
                     className="small text-white text-decoration-none"
-                    to="/hakkimizda">
+                    to="/hakkimizda"
+                    onClick={() => window.scrollTo(0, 0)}
+                  >
                     Hakkımızda
                   </Link>
                 </li>
@@ -22,6 +24,7 @@ const OutFooter = () => {
                   <Link
                     className="small text-white text-decoration-none"
                     to="/bireyler-icin"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     Bireyler İçin
                   </Link>
@@ -30,6 +33,7 @@ const OutFooter = () => {
                   <Link
                     className="small text-white text-decoration-none"
                     to="/kurumlar-icin"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     Kurumlar İçin
                   </Link>
@@ -38,6 +42,7 @@ const OutFooter = () => {
                   <Link
                     className="small text-white text-decoration-none"
                     to="/kurumsal-kimlik"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     Kurumsal Kimlik
                   </Link>
@@ -46,6 +51,7 @@ const OutFooter = () => {
                   <Link
                     className="small text-white text-decoration-none"
                     to="/sss"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     S.S.S.
                   </Link>
@@ -54,6 +60,7 @@ const OutFooter = () => {
                   <Link
                     className="small text-white text-decoration-none"
                     to="/iletisim"
+                    onClick={() => window.scrollTo(0, 0)}
                   >
                     İletişim
                   </Link>

@@ -4,6 +4,7 @@ type Props = {
   name: string;
   type?: string;
   placeholder?: string;
+  as?: string;
 };
 
 const FormikInput = (props: Props) => {
@@ -14,6 +15,7 @@ const FormikInput = (props: Props) => {
         name={props.name}
         type={props.type || "text"}
         placeholder={props.placeholder}
+        as={props.as}
         className="form-control"
       />
       <ErrorMessage name={props.name}>

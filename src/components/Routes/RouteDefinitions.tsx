@@ -30,6 +30,7 @@ import Settings from "../../pages/Platform/Profile/Settings/settings";
 import NotFound from "../../pages/NotFound/NotFound";
 import Calendar from "../Calendar/Calendar";
 import ProtectedRoute from "./ProtectedRoute";
+import ContactUs from "../../pages/Tobeto/ContactUs/ContactUs";
 
 const RouteDefinitions = () => {
 	return (
@@ -38,6 +39,7 @@ const RouteDefinitions = () => {
 			<Route path="*" element={<NotFound />} />
 			<Route path="/" element={<Homepage />} />
 			<Route path="/hakkimizda" element={<AboutUs />} />
+			<Route path="/iletisim" element={<ContactUs />} />
 			<Route path="/bireyler-icin" element={<ForIndividuals />} />
 			<Route path="/kurumlar-icin" element={<ForCorporate />} />
 			<Route path="/katalog" element={<OutCatalog />} />

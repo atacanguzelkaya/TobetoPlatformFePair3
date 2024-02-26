@@ -38,42 +38,42 @@ const OutNavbar = () => {
         <Navbar.Toggle aria-controls="navbar-nav" />
         <Navbar.Collapse id="navbar-nav">
           <Nav className="mx-auto">
-            <Nav.Link as={Link} to="/hakkimizda">
+            <Nav.Link as={Link} to="/hakkimizda" onClick={() => window.scrollTo(0, 0)}>
               {" "}
               Biz Kimiz?{" "}
             </Nav.Link>
             <NavDropdown title="Neler Sunuyoruz?" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/bireyler-icin">
+              <NavDropdown.Item as={Link} to="/bireyler-icin" onClick={() => window.scrollTo(0, 0)}>
                 {" "}
                 Bireyler İçin{" "}
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/kurumlar-icin">
+              <NavDropdown.Item as={Link} to="/kurumlar-icin" onClick={() => window.scrollTo(0, 0)}>
                 {" "}
                 Kurumlar İçin{" "}
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={Link} to="/katalog">
+            <Nav.Link as={Link} to="/katalog" onClick={() => window.scrollTo(0, 0)}>
               {" "}
               Katalog{" "}
             </Nav.Link>
-            <Nav.Link as={Link} to="/codecademy">
+            <Nav.Link as={Link} to="/codecademy" onClick={() => window.scrollTo(0, 0)}>
               {" "}
               Codecademy{" "}
             </Nav.Link>
             <NavDropdown title="Tobeto'da Bu Ay" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} to="/blog">
+              <NavDropdown.Item as={Link} to="/blog" onClick={() => window.scrollTo(0, 0)}>
                 {" "}
                 Blog{" "}
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/basinda-biz">
+              <NavDropdown.Item as={Link} to="/basinda-biz" onClick={() => window.scrollTo(0, 0)}>
                 {" "}
                 Basında Biz{" "}
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/takvim-anasayfa">
+              <NavDropdown.Item as={Link} to="/takvim-anasayfa" onClick={() => window.scrollTo(0, 0)}>
                 {" "}
                 Takvim{" "}
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} to="/istanbul-kodluyor">
+              <NavDropdown.Item as={Link} to="/istanbul-kodluyor" onClick={() => window.scrollTo(0, 0)}>
                 {" "}
                 İstanbul Kodluyor{" "}
               </NavDropdown.Item>
@@ -81,19 +81,19 @@ const OutNavbar = () => {
           </Nav>
           <Nav className="me-right mx-5">
             {token ? (
-              <Nav.Link as={Link} to="/platform">
+              <Nav.Link as={Link} to="/platform" onClick={() => window.scrollTo(0, 0)}>
                 <Button variant="outline-light" className="rounded-5">
                   {userName}
                 </Button>
               </Nav.Link>
             ) : (
               <>
-                <Nav.Link as={Link} to="/giris">
+                <Nav.Link as={Link} to="/giris" onClick={() => window.scrollTo(0, 0)}>
                   <Button variant="outline-light" className="rounded-5">
                     Giriş Yap
                   </Button>
                 </Nav.Link>
-                <Nav.Link as={Link} to="/kayit-ol">
+                <Nav.Link as={Link} to="/kayit-ol" onClick={() => window.scrollTo(0, 0)}>
                   <Button variant="rainbow">Ücretsiz Üye Ol</Button>
                 </Nav.Link>
               </>

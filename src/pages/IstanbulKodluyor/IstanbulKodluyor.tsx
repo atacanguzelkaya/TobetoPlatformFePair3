@@ -1,5 +1,6 @@
-import { Container, Row, Col } from 'react-bootstrap';
+import { Container, Row, Col,Image } from 'react-bootstrap';
 import "./istanbul-kodluyor.css";
+import { Link } from 'react-router-dom';
 
 const IstanbulKodluyor = () => (
   <>
@@ -33,6 +34,60 @@ const IstanbulKodluyor = () => (
           </p>
         </Col>
       </Row>
+      <Row>
+      <Col md={6} xs={12} className="bg-lightblue d-flex justify-content-center">
+          <p className="text-center ic-header">Yazılım ve teknoloji alanında yeni bir kariyere adım atmak istiyorsan</p>
+          <ul className="ic-list">
+            <li>18-35 yaş arasındaysan</li>
+            <li>Lise veya üniversite mezunuysan</li>
+            <li>Son 6 aydır ve şu an öğrenci değilsen</li>
+            <li>Son 1 yıldır çalışmıyorsan</li>
+            <li>İş arayışındaysan</li>
+          </ul>
+          <span>O halde doğru yerdesin!</span>
+          <hr style={{ width: 'inherit' }} />
+          <span>Aklına takılan tüm sorular için;</span>
+          <div className="mt-3">
+            <div className="istka-flex">
+              <div className="d-flex justify-content-center align-items-center" style={{ gap: '14px' }}>
+                <span className='align-items-center'>1</span>
+                <h4 className='text-center'>Sıkça Sorulan Sorulara Bakabilirsin</h4>
+              </div>
+              <Link to="/istanbul-kodluyor#sss" className="btn btn-dark ms-5 my-sm-4" >S.S.S.</Link>
+            </div>
+            <div className="istka-flex">
+              <div className="d-flex justify-content-center align-items-center" style={{ gap: '14px' }}>
+              <span className='align-items-center'>2</span>
+                <h4>Bize Yazabilirsin</h4>
+              </div>
+              <Link to="mailto:istanbulkodluyor@tobeto.com" className="btn btn-dark ms-5 my-sm-4">
+                <svg width="20" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M4 4H20C21.1 4 22 4.9 22 6V18C22 19.1 21.1 20 20 20H4C2.9 20 2 19.1 2 18V6C2 4.9 2.9 4 4 4Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                  <path d="M22 6L12 13L2 6" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"></path>
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </Col>
+        <Col md={6} xs={12} className="d-flex justify-content-center">
+              <div className="ik-banner-big h-100 text-center">
+                <Image
+                  alt="İstanbul Kodluyor Logo"
+                  src="https://tobeto.com/_next/static/media/ik-logo-dark.7938c0de.svg"
+                  width="200"
+                  height="200"
+                />
+                 <div className="custom-text">
+                  Aradığın "İş" Burada!
+                </div>
+                <div>
+                  <Link to="/kayit-ol" onClick={() => window.scrollTo(0, 0)} className="btn btn-success px-5 rounded-4 w-100 mt-5">
+                    Başvur
+                  </Link>
+                </div>
+              </div>
+        </Col>
+      </Row>
       <Row className="bg-lightgreen">
         <div className="header-left-2">
           <span className="header-left-text">İstanbul Kodluyor Projesi Hakkında </span>
@@ -43,7 +98,7 @@ const IstanbulKodluyor = () => (
           </p>
         </Col>
       </Row>
-      <Row className="bg-darkblue p-10">
+      <Row className="bg-darkblue p-5">
         <span className="text-neon">SÜREÇ</span>
         <Col className="position-relative text-center">
           <section className="ps-timeline-sec">
@@ -88,7 +143,7 @@ const IstanbulKodluyor = () => (
         <div className="header-right-2">
           <span className="header-right-text">İstihdama Giden Yol</span>
         </div>
-        <Col className="mt-20 text-center-mobil">
+        <Col className="mt-5 text-center-mobil">
           <span className="neontext">Yazılım ve Teknoloji Alanında Meslek Edinmeye Yönelik Eğitimler</span>
           <div className="detailList">
             <div className="list">

@@ -132,9 +132,9 @@ const Login = () => {
                   Aradığın "İş" Burada!
                 </div>
                 <div>
-                  <button className="btn btn-success px-5 rounded-4 w-100 mt-20">
+                  <Link to="/kayit-ol" className="btn btn-success px-5 rounded-4 w-100 mt-5">
                     Başvur
-                  </button>
+                  </Link>
                 </div>
               </div>
             </div>
